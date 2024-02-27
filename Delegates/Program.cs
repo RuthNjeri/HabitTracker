@@ -7,11 +7,11 @@ class Program
 	public delegate void HabitUpdate();
 	static void Main(string[] args)
 	{
-		var habit1 = new Habits( "Gym", "Exercise five times a week", 1, 208);
+		var habit1 = new Habit("Gym", "Exercise five times a week", "days", 208);
 			
-		var habit2 = new Habits( "Reading", "Read one hour a day", 1, 208);
+		var habit2 = new Habit( "Reading", "Read one hour a day", 1, 208);
 			
-		var habit3 = new Habits( "Swimming", "Swim once a week", 1, 208);
+		var habit3 = new Habit( "Swimming", "Swim once a week", 1, 208);
 		
 		// Using delegates
 		// Delegates can be used as callbacks
@@ -21,5 +21,5 @@ class Program
 		
 	}
 	
-	public static void 
+	//public static void 
 }

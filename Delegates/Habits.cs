@@ -1,12 +1,15 @@
-public class Habits
+public class Habit
 {
-	public required string Name;
-	public string? Description;
-	public required dynamic Metric; // There are different metrics out there, time, date, kgs, meters..etc
-	public required dynamic Goal;
-	public int Frequency = 0;
+	public delegate string HabitCallback(object sender, EventArgs e);
+	public event HabitCallback Progress;
+	public string? Name {get; set;}
+	public string? Description {get; set;}
+	public  string? Metric {get; set;} // There are different metrics out there, time, date, kgs, meters..etc
+	public  int? Goal {get; set;}
+	private int _frequency = 0;
 	
-	public Habits(string name, string description, dynamic metric, dynamic goal)
+
+	public Habit(string name, string description, string metric, int goal)
 	{
 		Name = name;
 		Description = description;
@@ -14,21 +17,27 @@ public class Habits
 		Goal = goal;
 	}
 	
-	public string TotalFrequency()
+	public void updateHabit()
 	{
-		Frequency += 1;
-		
-		return $"Congratulations on completing the habit {Frequency} times!";
+		Goal += 1;
+		HabitCallback TrackHabitProgress;
+		Progress?.Invoke(TrackHabitProgress, EventArgs.Empty);
 	}
 	
-	public string  TrackGoal()
+	/// <summary>
+	/// Track the Goal and Frequency of a habit
+	/// </summary>
+	/// <returns></returns>
+	public string TrackHabitProgress()
 	{
-		string goalPercentage = 
-		string goalUpdate = ""
-		if(Goal == Frequency)
+		_frequency += 1;
+		
+		if(_frequency == Goal)
 		{
-			
+			return $"Congratulations on reaching your goal of {Goal} {Metric} on {Name}!";
 		}
+		
+		return $"You are making a great progess on completing the habit {_frequency} times!";
 	}
 	
 }

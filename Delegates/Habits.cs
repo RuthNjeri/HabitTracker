@@ -1,13 +1,18 @@
 public class Habit
 {
-	public delegate string HabitCallback(object sender, EventArgs e);
-	public event HabitCallback Progress;
+	// public delegate string HabitCallback(object sender, EventArgs e);
+	// public event HabitCallback Progress;
 	public string? Name {get; set;}
+	//public string? Name {get; set;}
+	//public string? Name 
+	//private string? Name 
+	//string? Name2;  // Private member without accessibility modifier
 	public string? Description {get; set;}
 	public  string? Metric {get; set;} // There are different metrics out there, time, date, kgs, meters..etc
 	public  int? Goal {get; set;}
 	private int _frequency = 0;
 	
+	private static int totalHabits;
 
 	public Habit(string name, string description, string metric, int goal)
 	{
@@ -15,13 +20,14 @@ public class Habit
 		Description = description;
 		Metric = metric;
 		Goal = goal;
+		totalHabits += 1;
 	}
 	
-	public void updateHabit()
+	public void UpdateHabitFrequency()
 	{
 		Goal += 1;
-		HabitCallback TrackHabitProgress;
-		Progress?.Invoke(TrackHabitProgress, EventArgs.Empty);
+		// HabitCallback TrackHabitProgress;
+		// Progress?.Invoke(TrackHabitProgress, EventArgs.Empty);
 	}
 	
 	/// <summary>
@@ -40,4 +46,5 @@ public class Habit
 		return $"You are making a great progess on completing the habit {_frequency} times!";
 	}
 	
+	public static int GetTotalHabits => totalHabits;	
 }

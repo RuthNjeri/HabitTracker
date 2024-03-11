@@ -8,10 +8,11 @@ class Program
 	static void Main(string[] args)
 	{
 		var habit1 = new Habit("Gym", "Exercise five times a week", "days", 208);
+		//var habitgetsetfields = new Habit{ Name = "Gym", Description = "Exercise five times a week", Metric = "days", Goal = 208};
 			
-		var habit2 = new Habit( "Reading", "Read one hour a day", 1, 208);
+		var habit2 = new Habit( "Reading", "Read one hour a day", "days", 208);
 			
-		var habit3 = new Habit( "Swimming", "Swim once a week", 1, 208);
+		var habit3 = new Habit( "Swimming", "Swim once a week", "days", 208);
 		
 		// Using delegates
 		// Delegates can be used as callbacks
